@@ -1,0 +1,27 @@
+modules:
+# If ifDesc is unique.
+  default:
+    walk: [sysUpTime, interfaces, ifXTable]
+    lookups:
+      - old_index: ifIndex
+        new_index: ifDescr
+# If ifName is unique.
+  default_ifname:
+    walk: [sysUpTime, interfaces, ifXTable]
+    lookups:
+      - old_index: ifIndex
+        new_index: ifName
+# If only ifIndex is unique.
+  default_ifindex:
+    walk: [sysUpTime, interfaces, ifXTable]
+
+# A10 Load Balancer
+  a10_axlb:
+    walk:
+      - sysUpTime # Uptime
+      - interfaces # Interfaces 
+      - axSysCpu # CPU stats
+      - axSysMemory # Memory stats
+      - axSysDisk # Disk stats
+      - axSysHwInfo # Hardware stats (Temperature, fan speed)
+      - axNetwork # Network stats
