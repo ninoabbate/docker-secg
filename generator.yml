@@ -15,13 +15,3 @@ modules:
   default_ifindex:
     walk: [sysUpTime, interfaces, ifXTable]
 
-# A10 Load Balancer
-  a10_axlb:
-    walk:
-      - sysUpTime # Uptime
-      - interfaces # Interfaces 
-      - axSysCpu # CPU stats
-      - axSysMemory # Memory stats
-      - axSysDisk # Disk stats
-      - axSysHwInfo # Hardware stats (Temperature, fan speed)
-      - axNetwork # Network stats

@@ -7,11 +7,11 @@ This is a docker container built to facilitate the config generation, it is buil
 - your device MIBs
 
 ## How to run it
-For demo purposes I've added the A10 AX load balancer mibs to this repo.
+For demo purposes only:
 - Clone this repo
 - Run the aabbate/secg container mounting the MIBs directory and the empty `snmp.yml` file 
 ```
-$  docker run -it -v "$PWD/a10mibs:/root/.snmp/mibs" -v "$PWD/snmp.yml:/snmp_exporter/generator/snmp.yml" aabbate/secg
+$  docker run -it -v "$PWD/mibs:/root/.snmp/mibs" -v "$PWD/snmp.yml:/snmp_exporter/generator/snmp.yml" aabbate/secg
 ```
 - Once completed, you will find the generated configuration on the `snmp.yml` file 
 
@@ -19,8 +19,9 @@ $  docker run -it -v "$PWD/a10mibs:/root/.snmp/mibs" -v "$PWD/snmp.yml:/snmp_exp
 - Execute a snmpwalk on your device in order to get the right OIDs
 - Clone this repo
 - Edit the `generator.yml` adding your OIDs
+- Copy your MIBs files on mibs directory
 - Run the aabbate/secg container mounting:
-    * your MIBs directory to `/root/.snmp/mibs`
+    * the mibs directory to `/root/.snmp/mibs`
     * the empty `snmp.yml` to `/snmp_exporter/generator/snmp.yml`
     * your custom `generator.yml` file to `/snmp_exporter/generator/generator.yml`
 - Get the configuration from the updated `snmp.yml` file
