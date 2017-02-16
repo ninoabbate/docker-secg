@@ -7,11 +7,13 @@ This is a docker container built to facilitate the config generation, it is buil
 - your device MIBs
 
 ## How to run it
-For demo purposes only:
+For demo purposes I've added the Palo Alto firewall mibs to this repo.
 - Clone this repo
-- Run the aabbate/secg container mounting the MIBs directory and the empty `snmp.yml` file 
+- Run the aabbate/secg container mounting the MIBs directory, the generator.yml file and the empty `snmp.yml` file 
 ```
-$  docker run -it -v "$PWD/mibs:/root/.snmp/mibs" -v "$PWD/snmp.yml:/snmp_exporter/generator/snmp.yml" aabbate/secg
+$  docker run -it -v "$PWD/mibs:/root/.snmp/mibs" \
+	-v "$PWD/generator.yml:/snmp_exporter/generator/generator.yml" \
+	-v "$PWD/snmp.yml:/snmp_exporter/generator/snmp.yml" aabbate/secg
 ```
 - Once completed, you will find the generated configuration on the `snmp.yml` file 
 
