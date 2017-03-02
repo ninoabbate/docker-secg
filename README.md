@@ -11,7 +11,7 @@ For demo purposes I've added the Palo Alto firewall mibs to this repo.
 - Clone this repo
 - Run the aabbate/secg container mounting the MIBs directory, the generator.yml file and the empty `snmp.yml` file 
 ```
-$  docker run -it -v "$PWD/mibs:/root/.snmp/mibs" \
+$  docker run --rm -v "$PWD/mibs:/root/.snmp/mibs" \
 	-v "$PWD/generator.yml:/snmp_exporter/generator/generator.yml" \
 	-v "$PWD/snmp.yml:/snmp_exporter/generator/snmp.yml" aabbate/secg
 ```
