@@ -15,6 +15,6 @@ RUN apk --no-cache add go git net-snmp net-snmp-tools net-snmp-dev alpine-sdk \
 	&& cd generator \
 	&& go build
 
-ADD generator.yml /snmp_exporter/generator/
+ADD generator.yml /root/go/src/github.com/prometheus/snmp_exporter/generator/
 
 CMD /bin/sh -c 'cd /root/go/src/github.com/prometheus/snmp_exporter/generator; ./generator generate'
