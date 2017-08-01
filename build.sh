@@ -3,6 +3,8 @@
 # Get the latest release tag
 TAG=$(curl https://api.github.com/repos/prometheus/snmp_exporter/releases/latest -s | jq .tag_name -r)
 
+echo "Now building SNMP Exporter Configuration Generator" ${TAG}
+
 # Set the version in Dockerfile before building the container
 OS=$(uname -a | awk '{print $1}')
 if [ $OS = "Darwin" ]; then
