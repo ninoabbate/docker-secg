@@ -8,12 +8,13 @@ ENV APP_VERSION
 
 # snmp exporter config generator
 RUN apk --no-cache add go git net-snmp net-snmp-tools net-snmp-dev alpine-sdk \
-	&& mkdir -p $HOME/.snmp/mibs \
-	&& go get github.com/prometheus/snmp_exporter/generator \
-	&& cd /root/go/src/github.com/prometheus/snmp_exporter \
-	&& git checkout tags/${APP_VERSION} \
-	&& cd generator \
-	&& go build
+    && rm -rf /var/cache/apk/* \
+    && mkdir -p $HOME/.snmp/mibs \
+    && go get github.com/prometheus/snmp_exporter/generator \
+    && cd /root/go/src/github.com/prometheus/snmp_exporter \
+    && git checkout tags/${APP_VERSION} \
+    && cd generator \
+    && go build
 
 ADD generator.yml /root/go/src/github.com/prometheus/snmp_exporter/generator/
 

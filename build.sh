@@ -1,7 +1,12 @@
 #!/bin/bash
 
-# Get the latest release tag
-TAG=$(curl https://api.github.com/repos/prometheus/snmp_exporter/releases/latest -s | jq .tag_name -r)
+# Set the TAG for docker-secg container build
+if [ -z "$1" ]; then
+    # Get the latest release tag from snmp_exporter repository in GitHub
+    TAG=$(curl https://api.github.com/repos/prometheus/snmp_exporter/releases/latest -s | jq .tag_name -r)
+else
+    TAG="$1"
+fi
 
 echo "Now building SNMP Exporter Configuration Generator" ${TAG}
 
